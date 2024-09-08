@@ -2,3 +2,4 @@ posts: 4000;
 comments: 6000;
 client: 3000;
 event-bus: 7000
+query: 8000
