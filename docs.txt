@@ -1,5 +1,10 @@
+PORTS LIST:
 posts: 4000;
 comments: 6000;
 client: 3000;
 event-bus: 7000
 query: 8000
+moderation: 9000
+
+// We will use query service to make a request to get a full listing of all the different posts and their associated comments "update" events
+// Moderation service will watch for events 
