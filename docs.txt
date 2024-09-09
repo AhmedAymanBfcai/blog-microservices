@@ -1,10 +1,18 @@
 PORTS LIST:
-posts: 4000;
-comments: 6000;
-client: 3000;
-event-bus: 7000
-query: 8000
-moderation: 9000
+posts: 4000 -> 4000
+comments: 6000 -> 4001
+client: 3000
+event-bus: 7000 -> 4005
+query: 8000 -> 4002
+moderation: 9000 -> 4003
 
 // We will use query service to make a request to get a full listing of all the different posts and their associated comments "update" events
 // Moderation service will watch for events 
+
+- Why Docker?
+Running our app right now makes big assumptions about our env and it requires some knowledge of how to start (npm start)
+Docker sovles both these issues. containers wrap up everything that is needed for a program and how to start and run it.
+
+- Why K8s?
+Kubernetes is a tool for running bunch of diff containers.
+We give it some configuration to describe how we want our containers to run and interact with each other.
