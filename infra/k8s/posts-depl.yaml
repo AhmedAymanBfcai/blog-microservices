@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: posts-depl
+spec:
+  replicas: 1
+  selector: # Take a look at the different pods that have been created with a label of app: posts
+    matchLables:
+      app: posts # "A label- Key value pair"
+  template: # We specify the config of a pod that we want this deployment to create, Bot selector and template tell deloyment about which pods to manage.
+    metadata:
+      labels:
+        app: posts
+    spec: # Describe the configuration options where the pod we're trying to make.
+      containers:
+        - name: posts
+          image: ahmedaymanbfcai/posts
