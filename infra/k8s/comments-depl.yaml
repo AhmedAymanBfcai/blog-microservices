@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comments-depl
+spec:
+  replicas: 1
+  selector:
+    matchLables:
+      app: comments-depl
+  template:
+    metadata:
+      labels:
+        app: comments-depl
+    spec:
+      containers:
+        - name: comments-depl
+          image: ahmedaymanbfcai/comments-depl
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: comments-src
+spec:
+  type: ClusterIP
+  selector:
+    app: comments-src
+  ports:
+    - name: comments-src
+      protocol: TCP
+      port: 6000
+      targetPort: 6000

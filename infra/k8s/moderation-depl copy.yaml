@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moderation-depl
+spec:
+  replicas: 1
+  selector:
+    matchLables:
+      app: moderation-depl
+  template:
+    metadata:
+      labels:
+        app: moderation-depl
+    spec:
+      containers:
+        - name: moderation-depl
+          image: ahmedaymanbfcai/moderation-depl
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moderation-src
+spec:
+  type: ClusterIP
+  selector:
+    app: moderation-src
+  ports:
+    - name: moderation-src
+      protocol: TCP
+      port: 9000
+      targetPort: 9000

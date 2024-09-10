@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: query-depl
+spec:
+  replicas: 1
+  selector:
+    matchLables:
+      app: query-depl
+  template:
+    metadata:
+      labels:
+        app: query-depl
+    spec:
+      containers:
+        - name: query-depl
+          image: ahmedaymanbfcai/query-depl
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: query-src
+spec:
+  type: ClusterIP
+  selector:
+    app: query-src
+  ports:
+    - name: query-src
+      protocol: TCP
+      port: 8000
+      targetPort: 8000
